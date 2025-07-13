@@ -13,16 +13,16 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
+/*d3.json("http://127.0.0.1:8000/data/",
 
   // When reading the csv, I must format variables:
   function(d){
     return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+	alert(data);
   },
 
   // Now I can use this dataset:
   function(data) {
-
     // Add X axis --> it is a date format
     var x = d3.scaleTime()
       .domain(d3.extent(data, function(d) { return d.date; }))
@@ -50,4 +50,21 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
         )
 
 })
+*/
+d3.request("http://127.0.0.1:8000/data/")
+  .response(function(request) { return JSON.parse(request.responseText); })
+  .get(function(error, data) 
+{
+    if (error) {
+      console.error("Error fetching data:", error);
+    } else {
+     	console.log(data);
+	
+	data.forEach(data_point =>
+	{
+		console.log(`date:  ${data_point.date}   value:  ${data_point.value}`);	
+	});
+	// Process your data here
+    }
+  });
 
