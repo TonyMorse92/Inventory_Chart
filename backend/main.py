@@ -28,3 +28,8 @@ def fib_n(n: int):
 @app.get("/fib/{n}")
 def read_fib(n: int):
 	return {"fib_n": fib_n(n)}
+
+
+@app.get("/test/")
+def read_root():
+	return [{"1": 2}, {"01/02/25": 252}]
