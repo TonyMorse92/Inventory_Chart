@@ -4,8 +4,28 @@ var margin = {top: 10, right: 30, bottom: 30, left: 60},
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var main_svg = d3.select("body")
   .append("svg")
+	.attr("id", "mainsvg")
+    .attr("width", 2*(width + margin.left + margin.right) + 10) //10 is a gap
+    .attr("height", height + margin.top + margin.bottom)
+
+
+
+// append the svg object to the body of the page
+var svg = d3.select("svg#mainsvg")
+  .append("svg")
+	.attr("id", "svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// append the svg object to the body of the page
+var svg2 = d3.select("svg#mainsvg")
+  .append("svg")
+	.attr("id", "svg2")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -65,19 +85,6 @@ d3.request("http://127.0.0.1:8000/data/")
 
 });
 
-// set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
-
-// append the svg object to the body of the page
-var svg2 = d3.select("#my_dataviz2")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
 
   // When reading the csv, I must format variables:
   function parse(data) {
