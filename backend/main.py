@@ -1,8 +1,8 @@
 from typing import Union
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware # Required for cross-origin requests
-from datetime import date
-
+from datetime import date, timedelta
+import math, random
 
 app = FastAPI()
 
@@ -21,16 +21,19 @@ def read_root():
 
 
 def generate_data(n):
+	data = []
 	today = date.today()
-	return 
+	for i in range(0, n):
+		val = 25 + 2 ** (math.floor(i/100)* random.rantint(0,32))	
+		data.append({"date": str(today - timedelta(days=i)), "value": val}) 
+	return data 
 
 @app.get("/data/")
 def read_data():
-	data = []
-	return data 
+	return generate_data(1000) 
 
 
-@app.get("/data/")
+@app.get("/zzzdata/")
 def read_data():
 	return [{"date": "2021-11-11", "value": 36},
 {"date": "2021-11-12", "value": 35},
