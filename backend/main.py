@@ -1,6 +1,7 @@
 from typing import Union
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware # Required for cross-origin requests
+from datetime import date
 
 
 app = FastAPI()
@@ -19,15 +20,14 @@ def read_root():
 	return {"Hello": "World"}
 
 
-def fib_n(n: int):
-	if n < 2:
-		return 1
-	else:
-		return fib_n(n-1) + fib_n(n-2)
+def generate_data(n):
+	today = date.today()
+	return 
 
-@app.get("/fib/{n}")
-def read_fib(n: int):
-	return {"fib_n": fib_n(n)}
+@app.get("/data/")
+def read_data():
+	data = []
+	return data 
 
 
 @app.get("/data/")
