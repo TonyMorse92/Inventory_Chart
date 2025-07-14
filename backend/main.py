@@ -31,7 +31,7 @@ def read_fib(n: int):
 
 
 @app.get("/data/")
-def read_root():
+def read_data():
 	return [{"date": "2021-11-11", "value": 36},
 {"date": "2021-11-12", "value": 35},
 {"date": "2021-11-13", "value": 32},
