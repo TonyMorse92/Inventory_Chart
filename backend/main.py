@@ -24,7 +24,7 @@ def generate_data(n):
 	data = []
 	today = date.today()
 	for i in range(0, n):
-		val = 25 + 2 ** (math.floor(i/100)* random.rantint(0,32))	
+		val = 25 + 2 ** (math.floor(i/100)* random.randint(0,32))	
 		data.append({"date": str(today - timedelta(days=i)), "value": val}) 
 	return data 
 
