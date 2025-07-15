@@ -68,7 +68,7 @@ var svg2 = d3.select("svg#mainsvg")
         )
 	};
 
-d3.request("http://127.0.0.1:8000/data/")
+d3.request("http://127.0.0.1:8000/exp/")
 .response(function(request) { return JSON.parse(request.responseText); })
 .get(function(error, data) {
 	if(error) {
@@ -122,7 +122,7 @@ d3.request("http://127.0.0.1:8000/data/")
         )
 	};
 
-d3.request("http://127.0.0.1:8000/data2/")
+d3.request("http://127.0.0.1:8000/hyp/")
 .response(function(request) { return JSON.parse(request.responseText); })
 .get(function(error, data) {
 	if(error) {
