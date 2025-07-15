@@ -31,3 +31,17 @@ def generate_data(n):
 @app.get("/data/")
 def read_data():
 	return generate_data(1000) 
+
+
+
+def generate_data2(n):
+	data = []
+	today = date.today()
+	for i in range(0, n):
+		val = random.randint(5,8) + 2 ** math.floor(i/10)	
+		data.append({"date": str(today - timedelta(days=(n-i))), "value": val}) 
+	return data 
+
+@app.get("/data2/")
+def read_data():
+	return generate_data2(1000) 

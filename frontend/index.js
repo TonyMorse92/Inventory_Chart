@@ -3,11 +3,13 @@ var margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
+gap = 50
+
 // append the svg object to the body of the page
 var main_svg = d3.select("body")
   .append("svg")
 	.attr("id", "mainsvg")
-    .attr("width", 2*(width + margin.left + margin.right) + 50) //10 is a gap
+    .attr("width", 2*(width + margin.left + margin.right) + gap) 
     .attr("height", height + margin.top + margin.bottom)
 
 
@@ -30,7 +32,7 @@ var svg2 = d3.select("svg#mainsvg")
     .attr("height", height + margin.top + margin.bottom)
 //  .append("g")
     .attr("transform",
-          "translate(" + (margin.left + width + 50) + "," + margin.top + ")");
+          "translate(" + (margin.left + width + gap) + "," + margin.top + ")");
 
   // When reading the csv, I must format variables:
   function parse(data) {
@@ -62,7 +64,6 @@ var svg2 = d3.select("svg#mainsvg")
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
-        //.x(function(d) {  return d.date })
         .y(function(d) { return y(d.value) })
         )
 	};
@@ -121,7 +122,7 @@ d3.request("http://127.0.0.1:8000/data/")
         )
 	};
 
-d3.request("http://127.0.0.1:8000/data/")
+d3.request("http://127.0.0.1:8000/data2/")
 .response(function(request) { return JSON.parse(request.responseText); })
 .get(function(error, data) {
 	if(error) {
