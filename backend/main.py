@@ -17,10 +17,10 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-	return {"Hello": "Go to /data/"}
+	return {"Hello": "There"}
 
 
-def generate_data(n):
+def generate_exponential(n):
 	data = []
 	today = date.today()
 	for i in range(0, n):
@@ -28,20 +28,20 @@ def generate_data(n):
 		data.append({"date": str(today - timedelta(days=(n-i))), "value": val}) 
 	return data 
 
-@app.get("/data/")
+@app.get("/exp/")
 def read_data():
-	return generate_data(1000) 
+	return generate_exponential(1000) 
 
 
 
-def generate_data2(n):
+def generate_hyperbola(n):
 	data = []
 	today = date.today()
 	for i in range(0, n):
-		val = random.randint(5,8) + 2 ** math.floor(i/10)	
+		val = random.randint(5,8) + i**2	
 		data.append({"date": str(today - timedelta(days=(n-i))), "value": val}) 
 	return data 
 
-@app.get("/data2/")
+@app.get("/hyp/")
 def read_data():
-	return generate_data2(1000) 
+	return generate_hyperbola(1000) 
