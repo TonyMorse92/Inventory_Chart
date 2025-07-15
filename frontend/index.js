@@ -7,7 +7,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 60},
 var main_svg = d3.select("body")
   .append("svg")
 	.attr("id", "mainsvg")
-    .attr("width", 2*(width + margin.left + margin.right) + 10) //10 is a gap
+    .attr("width", 2*(width + margin.left + margin.right) + 50) //10 is a gap
     .attr("height", height + margin.top + margin.bottom)
 
 
@@ -18,7 +18,7 @@ var svg = d3.select("svg#mainsvg")
 	.attr("id", "svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+ // .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
@@ -28,9 +28,9 @@ var svg2 = d3.select("svg#mainsvg")
 	.attr("id", "svg2")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+//  .append("g")
     .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+          "translate(" + (margin.left + width + 50) + "," + margin.top + ")");
 
   // When reading the csv, I must format variables:
   function parse(data) {
@@ -92,7 +92,7 @@ d3.request("http://127.0.0.1:8000/data/")
   }
 
   // Now I can use this dataset:
-  function make_chart(data) {
+  function make_chart2(data) {
     // Add X axis --> it is a date format
     var x = d3.scaleTime()
       .domain(d3.extent(data, function(d) { return d.date; }))
@@ -135,6 +135,6 @@ d3.request("http://127.0.0.1:8000/data/")
 			formatted_data.push({"date": date, "value": value});	
 		})
 	}	
-	make_chart(formatted_data);
+	make_chart2(formatted_data);
 
 });
