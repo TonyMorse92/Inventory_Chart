@@ -45,3 +45,17 @@ def generate_hyperbola(n):
 @app.get("/hyp/")
 def read_data():
 	return generate_hyperbola(1000) 
+
+
+@app.get("/pos/")
+def read_pos():
+	return ['po-322']
+
+
+@app.get("/spend/")
+def read_spend():
+	return 3
+
+@app.get("/inventory_levels/")
+def read_levels():
+	return 7
