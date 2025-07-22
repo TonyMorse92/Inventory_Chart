@@ -43,7 +43,7 @@ def generate_hyperbola(n):
 	return data 
 
 @app.get("/hyp/")
-def read_data():
+def get_data():
 	return generate_hyperbola(1000) 
 
 
