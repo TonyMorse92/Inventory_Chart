@@ -58,7 +58,7 @@ def read_spend():
 
 @app.get("/inventory_levels/")
 def read_levels():
-	return 7
+	return 15
 
 @app.get("/subs/")
 def get_subs():
