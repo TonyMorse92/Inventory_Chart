@@ -49,7 +49,7 @@ def get_data():
 
 @app.get("/pos/")
 def read_pos():
-	return [{"PO": "P222", "PO": "P223"}]
+	return [{"PO": "P222", "PO": "P223", "PO": "P224"}]
 
 
 @app.get("/spend/")
