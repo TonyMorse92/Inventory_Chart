@@ -34,6 +34,19 @@ def read_data():
 
 
 
+def generate_line(n):
+	data = []
+	today = date.today()
+	for i in range(0, n):
+		val = random.randint(5,8) + i	
+		data.append({"date": str(today - timedelta(days=(n-i))), "value": val}) 
+	return data 
+
+@app.get("/line/")
+def get_data():
+	return generate_line(1000) 
+
+
 def generate_hyperbola(n):
 	data = []
 	today = date.today()
